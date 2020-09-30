@@ -18,7 +18,7 @@ It also makes a few assumptions:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| cache\_retention\_days | The number of days to keep the objects around | string | n/a | yes |
+| cache\_retention\_days | The number of days to keep the objects around | string | null | no |
 | labels | Labels to apply on all the resources | map | `<map>` | no |
 | name | Name prefix for all the resources | string | n/a | yes |
 | project | GCP project name | string | n/a | yes |

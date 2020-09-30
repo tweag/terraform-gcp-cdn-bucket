@@ -25,5 +25,6 @@ variable "ssl_certificate" {
 
 variable "cache_retention_days" {
   description = "The number of days to keep the objects around"
+  default     = null
 }
 
