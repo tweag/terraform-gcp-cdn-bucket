@@ -27,13 +27,18 @@ resource "google_storage_bucket" "default" {
   location = var.region
 
   # cleanup the cache after ${var.cache_retention_days} days
-  lifecycle_rule {
-    action {
-      type = "Delete"
-    }
+  # if it's not null (with the default being null)
+  # abuse dynamic and for_each to add the lifecycle_rule conditionally
+  dynamic "lifecycle_rule" {
+    for_each = (var.cache_retention_days != null) ? [ null ] : []
+    content {
+      action {
+        type = "Delete"
+      }
 
-    condition {
-      age = var.cache_retention_days # days
+      condition {
+        age = var.cache_retention_days # days
+      }
     }
   }
 
